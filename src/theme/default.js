@@ -39,7 +39,7 @@ theme.palette = {
 
 theme.fonts = {
   primary:
-    '"Futura PT", "Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif',
+    '"Source Sans Pro", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif',
 }
 
 theme.shadows = {
@@ -72,7 +72,9 @@ theme.sizes = {
   screen: '1024px',
   bigScreen: '1366px',
   wideScreen: '1690px',
-  borderRadius: '8px',
+  borderRadiusS: '8px',
+  borderRadiusM: '15px',
+  borderRadiusL: '30px',
 }
 
 export default theme

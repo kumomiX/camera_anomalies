@@ -128,6 +128,10 @@ const MuiTheme = createMuiTheme({
           background: `${theme.palette.background.lightgrey} !important`,
         },
       },
+      gutters: {
+        paddingLeft: 'var(--spacing-s)',
+        paddingRight: 'var(--spacing-s)',
+      },
     },
     MuiTabs: {
       root: {

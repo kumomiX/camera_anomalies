@@ -1,3 +1,3 @@
 export default {
-  baseUri: 'http://cameras_diagnostic_api.systems/api/external/v1',
+  baseUri: 'http://api.virushack.dns.army/api/external/v1/',
 }
