@@ -17,18 +17,54 @@ export const fetchCameras = createAsyncThunk(
   },
 )
 
+export const fetchCamera = createAsyncThunk(
+  'cameras/fetchCamera',
+  async ({ uuid }, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await API.request(`/cameras/${uuid}`, { dispatch })
+      return response
+    } catch {
+      return rejectWithValue()
+    }
+  },
+)
+
 export const cameras = createSlice({
   name: 'counter',
   initialState: {
     list: null,
-    loading: true,
+    loadingList: true,
+    selected: null,
+    loadingSelected: false,
+  },
+  reducers: {
+    selectCamera: (state, { payload: cameraUuid }) => {
+      state.selected = cameraUuid
+    },
+    clearSelectedCamera: (state) => {
+      state.selected = null
+    },
   },
   extraReducers: {
+    [fetchCameras.pending]: (state) => {
+      state.loadingList = true
+    },
     [fetchCameras.fulfilled]: (state, { payload }) => {
       state.list = payload
-      state.loading = false
+      state.loadingList = false
+    },
+
+    [fetchCamera.pending]: (state) => {
+      state.loadingSelected = true
+      state.selected = null
+    },
+    [fetchCamera.fulfilled]: (state, { payload }) => {
+      state.selected = payload
+      state.loadingSelected = false
     },
   },
 })
+
+export const { selectCamera, clearSelectedCamera } = cameras.actions
 
 export default cameras.reducer

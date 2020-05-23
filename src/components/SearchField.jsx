@@ -15,7 +15,7 @@ const SearchField = styled(InputBase).attrs((p) => ({
   ),
 }))`
   && {
-    padding: ${(p) => p.theme.sizes.scale[2]};
+    padding: var(--spacing-s);
     background: ${(p) => p.theme.palette.background.lightgrey};
     border-radius: 15px;
     transition-property: background-color, border-color,border-radius;

@@ -77,7 +77,7 @@ const MuiTheme = createMuiTheme({
     MuiList: {
       root: {
         padding: '0 !important',
-        borderRadius: 20,
+        // borderRadius: 20,
         overflow: 'hidden',
       },
     },
@@ -99,9 +99,22 @@ const MuiTheme = createMuiTheme({
     },
     MuiFilledInput: {
       root: {
-        borderRadius: '15px !important',
-        background: 'transparent !important',
-        border: `${theme.palette.background.lightgrey} 2px solid`,
+        borderRadius: 'var(--br-m) !important',
+        background: 'var(--color-subtle-background) !important',
+        transitionProperty: 'background-color, border-color,border-radius',
+        transitionDuration: '0.25s',
+        transitionTimingFunction: 'ease',
+
+        '&:hover': {
+          background: 'var(--color-subtle-background-darker) !important',
+        },
+
+        '&$focused': {
+          background: 'var(--color-secondary) !important',
+          color: 'var(--color-secondary-contrast) !important',
+        },
+
+        // border: `${theme.palette.background.lightgrey} 2px solid`,
         // '&$focused': {
         //   border: `${theme.palette.primary.lighter} 2px solid `,
         // },
@@ -123,6 +136,16 @@ const MuiTheme = createMuiTheme({
       },
     },
     MuiListItem: {
+      root: {
+        '&$selected': {
+          backgroundColor: 'var(--color-secondary)',
+          color: 'var(--color-secondary-contrast)',
+        },
+        '&$selected:hover': {
+          backgroundColor: 'var(--color-secondary)',
+          color: 'var(--color-secondary-contrast)',
+        },
+      },
       button: {
         '&:hover': {
           background: `${theme.palette.background.lightgrey} !important`,

@@ -1,3 +1,4 @@
 export default {
-  baseUri: 'http://api.virushack.dns.army/api/external/v1/',
+  baseUri: 'https://api.virushack.dns.army/api/external/v1/',
+  title: 'Мониторинг Камер',
 }

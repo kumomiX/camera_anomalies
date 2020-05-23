@@ -1,17 +1,35 @@
 import React from 'react'
-import {
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-} from '@material-ui/core'
+import { ListItem, ListItemText, ListItemAvatar } from '@material-ui/core'
+import { Link, useLocation, matchPath } from 'react-router-dom'
+import Status from './Status'
 
-export default function Camera({ is_online, stream_url, thumb, ip, ...props }) {
-  console.log(thumb)
+export default function Camera({
+  uuid,
+  is_online,
+  is_active,
+  stream_url,
+  thumb,
+  ip,
+  ...props
+}) {
+  const location = useLocation()
+
+  const match = matchPath(location.pathname, {
+    path: '/cameras/:camera',
+    exact: true,
+    strict: false,
+  })
+
   return (
-    <ListItem>
+    <ListItem
+      selected={match?.params?.camera === uuid}
+      component={Link}
+      to={`/cameras/${uuid}`}
+    >
       <ListItemAvatar>
-        <Avatar src={thumb} />
+        {/*  TODO  */}
+        {/* <Status isOnline={is_online} isActive={is_active} /> */}
+        <Status />
       </ListItemAvatar>
       <ListItemText
         primary={stream_url}

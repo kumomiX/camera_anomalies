@@ -22,19 +22,17 @@ toast.configure({
 })
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <ThemeProvider theme={defaultTheme}>
-          <MuiThemeProvider theme={muiTheme}>
-            <App />
-            <GlobalStyle />
-            <ToastContainer tim />
-          </MuiThemeProvider>
-        </ThemeProvider>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <ThemeProvider theme={defaultTheme}>
+        <MuiThemeProvider theme={muiTheme}>
+          <App />
+          <GlobalStyle />
+          <ToastContainer tim />
+        </MuiThemeProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root'),
 )
 

@@ -9,7 +9,7 @@ export default function CamerasList() {
 
   const { cameras, loading } = useSelector(({ cameras }) => ({
     cameras: cameras.list,
-    loading: cameras.loading,
+    loading: cameras.loadingList,
   }))
 
   useEffect(() => {

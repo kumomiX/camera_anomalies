@@ -38,8 +38,6 @@ class Api {
     baseUri: ?string,
     omitContentType = false,
   ): Promise<any> {
-    console.log('request')
-
     const dispatch = options.dispatch
     // dispatch(incrementByAmount(100))
 

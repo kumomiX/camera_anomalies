@@ -3,17 +3,12 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-areas:
-    'header'
-    'main';
+  grid-template-areas: 'main';
   grid-template-columns: 1fr;
-  grid-template-rows: max-content 1fr;
-  min-height: 100vh;
-  /* padding: var(--spacing-s); */
+  grid-template-rows: 1fr;
 
-  & > header {
-    grid-area: header;
-  }
+  height: 100vh;
+  overflow: hidden;
 `
 
 const Main = styled.main`
@@ -22,16 +17,21 @@ const Main = styled.main`
   grid-template-areas: 'sidebar view';
   grid-template-columns: 365px 1fr;
   align-items: start;
+  --header-height: 68px;
 
-  &:first-child {
+  overflow: auto hidden;
+  height: 100%;
+  grid-auto-rows: 1fr;
+  /* grid-template-rows: var(--header-height) 1fr; */
+
+  & > aside {
     grid-area: sidebar;
   }
 `
 
-export default function AppTemplate({ header, sidebar, children }) {
+export default function AppTemplate({ sidebar, children }) {
   return (
     <Wrapper>
-      {header}
       <Main>
         {sidebar}
         {children}

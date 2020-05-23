@@ -6,7 +6,7 @@ export default function CamerasSearch() {
     <SearchField
       style={{
         width: '100%',
-        height: 'fit-content',
+        height: '100%',
       }}
       placeholder="Поиск"
     />

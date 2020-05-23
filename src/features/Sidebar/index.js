@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import CamerasSearch from 'features/cameras/Search'
-import { Edit } from 'react-feather'
-import { IconButton } from '@material-ui/core'
+import { PlusCircle } from 'react-feather'
+import { IconButton, Tooltip } from '@material-ui/core'
 import CamerasList from 'features/cameras/List'
+import Header from 'features/Header'
 
-const Wrapper = styled.div`
+const Wrapper = styled.aside`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -20,18 +21,21 @@ const Menu = styled.menu`
   height: fit-content;
   width: 100%;
   margin: 0;
-  padding: 0;
   padding: var(--spacing-s);
+  height: var(--header-height);
 `
 
 export default function Sidebar() {
   return (
     <Wrapper>
+      <Header />
       <Menu>
         <CamerasSearch />
-        <IconButton style={{ marginLeft: 'var(--spacing-s)' }}>
-          <Edit />
-        </IconButton>
+        <Tooltip title="Добавить камеру">
+          <IconButton style={{ marginLeft: 'var(--spacing-s)' }}>
+            <PlusCircle />
+          </IconButton>
+        </Tooltip>
       </Menu>
       <CamerasList />
     </Wrapper>
