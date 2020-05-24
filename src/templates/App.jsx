@@ -22,10 +22,13 @@ const Main = styled.main`
   overflow: auto hidden;
   height: 100%;
   grid-auto-rows: 1fr;
-  /* grid-template-rows: var(--header-height) 1fr; */
 
   & > aside {
     grid-area: sidebar;
+    box-shadow: var(--shadow-main) inset;
+  }
+  & > *:last-child {
+    border-radius: 15px !important;
   }
 `
 

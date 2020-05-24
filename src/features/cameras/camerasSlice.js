@@ -30,7 +30,7 @@ export const fetchCamera = createAsyncThunk(
 )
 
 export const cameras = createSlice({
-  name: 'counter',
+  name: 'cameras',
   initialState: {
     list: null,
     loadingList: true,

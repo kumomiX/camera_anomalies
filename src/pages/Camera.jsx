@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import CameraTemplate from 'templates/Camera'
 import { useSelector, useDispatch } from 'react-redux'
-import { CircularProgress, Typography, TextField } from '@material-ui/core'
-import { useParams } from 'react-router-dom'
+import { CircularProgress, Typography, IconButton } from '@material-ui/core'
+import { useParams, Link } from 'react-router-dom'
 import { fetchCamera, clearSelectedCamera } from 'features/cameras/camerasSlice'
 import { Helmet } from 'react-helmet'
 import config from 'app/config'
 import VideoPlayer from 'features/VideoPlayer'
-import CameraForm from 'features/cameras/CameraForm'
+import CameraConfigForm from 'features/cameras/CameraConfigForm'
+import CameraAnalyticsForm from 'features/cameras/CameraAnalyticsForm'
+import { X } from 'react-feather'
+import CameraLogs from 'features/cameras/Logs'
 
 export default function CameraPage() {
   const dispatch = useDispatch()
@@ -33,22 +36,29 @@ export default function CameraPage() {
           <CameraTemplate
             header={
               <>
-                <Typography>Камера</Typography>
-                <Typography variant="h5" color="primary">
-                  {camera?.ip}
-                </Typography>
+                <div>
+                  <Typography>Камера</Typography>
+                  <Typography variant="h5" color="primary">
+                    {camera?.ip}
+                  </Typography>
+                </div>
+                <IconButton
+                  style={{ marginLeft: 'auto' }}
+                  component={Link}
+                  to="/"
+                >
+                  <X />
+                </IconButton>
               </>
             }
           >
-            {/* <div style={{ maxWidth: 'var(--bp-mobile)' }}> */}
-
             <div>
               <VideoPlayer src={camera?.embed} />
-              <CameraForm />
+              <CameraConfigForm />
+              <CameraLogs />
             </div>
-            {/* </div> */}
-            <Typography variant="h5">Логи</Typography>
-            {/* <Typography variant="h4"></Typography> */}
+
+            <CameraAnalyticsForm />
           </CameraTemplate>
         </>
       )}

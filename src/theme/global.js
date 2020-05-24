@@ -92,6 +92,8 @@ export default css`
 
     --bp-tablet: 768px;
     --bp-mobile: 420px;
+
+    --shadow-main: 0 0 15px rgba(0, 0, 0, 0.07);
   }
 
   body {
