@@ -1,7 +1,13 @@
 import React from 'react'
-import { ListItem, ListItemText, ListItemAvatar } from '@material-ui/core'
+import {
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Divider,
+} from '@material-ui/core'
 import { Link, useLocation, matchPath } from 'react-router-dom'
 import Status from './Status'
+import AnalyticsStatus from './AnalyticsStatus'
 
 export default function Camera({
   uuid,
@@ -21,28 +27,32 @@ export default function Camera({
   })
 
   return (
-    <ListItem
-      selected={match?.params?.camera === uuid}
-      component={Link}
-      to={`/cameras/${uuid}`}
-    >
-      <ListItemAvatar>
-        {/*  TODO  */}
-        {/* <Status isOnline={is_online} isActive={is_active} /> */}
-        <Status />
-      </ListItemAvatar>
-      <ListItemText
-        primary={stream_url}
-        secondary={ip}
-        primaryTypographyProps={{
-          style: {
-            width: '100%',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis',
-          },
-        }}
-      />
-    </ListItem>
+    <>
+      <ListItem
+        selected={match?.params?.camera === uuid}
+        component={Link}
+        to={`/cameras/${uuid}`}
+      >
+        <ListItemAvatar>
+          {/*  TODO  */}
+          {/* <Status isOnline={is_online} isActive={is_active} /> */}
+          <Status />
+          {/* <AnalyticsStatus /> */}
+        </ListItemAvatar>
+        <ListItemText
+          primary={stream_url}
+          secondary={ip}
+          primaryTypographyProps={{
+            style: {
+              width: '100%',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+            },
+          }}
+        />
+      </ListItem>
+      <Divider variant="inset" component="li" />
+    </>
   )
 }

@@ -5,6 +5,7 @@ const Wrapper = styled.article`
   height: 100%;
   display: grid;
   grid-template-rows: var(--header-height) 1fr;
+  overflow: hidden auto;
 `
 
 const Header = styled.header`
@@ -42,6 +43,8 @@ const Body = styled.div`
   & > *:nth-child(2) {
     grid-area: logs;
     overflow: auto hidden;
+    align-items: start;
+    grid-auto-rows: max-content;
   }
 `
 

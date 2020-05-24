@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import FormField from 'components/FormFeild'
+import FormField from 'components/FormField'
 import { useSelector } from 'react-redux'
 import { Typography, Button } from '@material-ui/core'
 import styled from 'styled-components'
@@ -21,7 +21,9 @@ export default function CameraConfigForm(props) {
         </Typography>
         <FormField label="stream_url" name="stream_url" fullWidth />
 
-        <Button style={{ marginRight: 'auto' }}>Сохранить</Button>
+        <Button style={{ marginRight: 'auto' }} disabled>
+          Сохранить
+        </Button>
       </StyledForm>
     </Formik>
   )

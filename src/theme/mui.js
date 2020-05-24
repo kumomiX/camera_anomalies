@@ -50,7 +50,11 @@ const MuiTheme = createMuiTheme({
   },
   overrides: {
     MuiButton: {
-      root: { borderRadius: 15, textTransform: 'none' },
+      root: {
+        borderRadius: 15,
+        textTransform: 'none',
+        fontWeight: 'var(--font-weight-bold)',
+      },
       contained: {
         boxShadow: 'none !important',
       },
@@ -95,6 +99,14 @@ const MuiTheme = createMuiTheme({
         '&:hover:not($error):after': {
           borderColor: theme.palette.text.primary,
         },
+      },
+    },
+    MuiDivider: {
+      root: {
+        backgroundColor: 'var(--color-subtle-background)',
+      },
+      inset: {
+        marginLeft: 67,
       },
     },
     MuiFilledInput: {

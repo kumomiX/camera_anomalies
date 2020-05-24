@@ -9,7 +9,7 @@ export default function CameraLogs() {
         Логи
       </Typography>
 
-      <img src={empty} style={{ maxWidth: '220px' }} alt="" />
+      {/* <img src={empty} style={{ maxWidth: '220px' }} alt="" /> */}
       <Typography variant="h6" color="textSecondary">
         Тут пока ничего нет
       </Typography>

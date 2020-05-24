@@ -1,10 +1,20 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import FormField from 'components/FormFeild'
 import { useSelector } from 'react-redux'
-import { Typography } from '@material-ui/core'
+import {
+  Typography,
+  List,
+  ListItemSecondaryAction,
+  ListItem,
+  ListItemText,
+  Divider,
+  ListItemAvatar,
+  Avatar,
+} from '@material-ui/core'
 import styled from 'styled-components'
-import Status from 'features/cameras/Status'
+import names from './analytics'
+import Switch from 'components/Switch'
+import AnalyticsStatus from './AnalyticsStatus'
 
 const StyledForm = styled(Form)`
   display: grid;
@@ -16,15 +26,40 @@ export default function CameraConfigForm(props) {
   return (
     <Formik initialValues={camera} enableReinitialize {...props}>
       <StyledForm>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom color="primary">
           Доступные аналитики
         </Typography>
 
-        {Object.entries(camera?.issues).map(([key, value]) => (
-          <Typography>
-            {key} - <Status isOnline={value} />
-          </Typography>
-        ))}
+        <List
+          style={{
+            background: 'var(--color-subtle-background)',
+            borderRadius: 'var(--br-m)',
+          }}
+        >
+          {Object.entries(camera?.issues).map(([issueName, anomaly]) => (
+            <>
+              <ListItem>
+                <ListItemAvatar>
+                  <AnalyticsStatus active anomaly={anomaly} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={names[issueName]?.title || issueName}
+                  secondary={
+                    names[issueName]?.description || 'Описание отсутствует'
+                  }
+                />
+                <ListItemSecondaryAction>
+                  <Switch checked={true} color="primary" />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <Divider
+                style={{ background: 'var(--color-subtle-background-darker)' }}
+                variant="inset"
+                component="li"
+              />
+            </>
+          ))}
+        </List>
       </StyledForm>
     </Formik>
   )

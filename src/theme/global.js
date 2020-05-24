@@ -9,7 +9,7 @@ export default css`
 
   :root {
     /* main */
-    --font-weight-bold: 500;
+    --font-weight-bold: 600;
     --font-weight-medium: 400;
     --font-weight-light: 300;
     --font-family: 'Source Sans Pro', Futura, -apple-system, sans-serif;
