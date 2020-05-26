@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.js": "/static/js/main.c4531e47.chunk.js",
-    "main.js.map": "/static/js/main.c4531e47.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.795fd000.js",
-    "runtime-main.js.map": "/static/js/runtime-main.795fd000.js.map",
-    "static/css/2.d34346ea.chunk.css": "/static/css/2.d34346ea.chunk.css",
-    "static/js/2.caf7e6cd.chunk.js": "/static/js/2.caf7e6cd.chunk.js",
-    "static/js/2.caf7e6cd.chunk.js.map": "/static/js/2.caf7e6cd.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.ff141344bc4665b0292874958b456142.js": "/precache-manifest.ff141344bc4665b0292874958b456142.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.d34346ea.chunk.css.map": "/static/css/2.d34346ea.chunk.css.map",
-    "static/js/2.caf7e6cd.chunk.js.LICENSE.txt": "/static/js/2.caf7e6cd.chunk.js.LICENSE.txt",
-    "static/media/empty.png": "/static/media/empty.805c606f.png",
-    "static/media/logo.8dad8028.svg": "/static/media/logo.8dad8028.svg"
+    "main.js": "/camera_anomalies/static/js/main.fdb20fcc.chunk.js",
+    "main.js.map": "/camera_anomalies/static/js/main.fdb20fcc.chunk.js.map",
+    "runtime-main.js": "/camera_anomalies/static/js/runtime-main.b814477d.js",
+    "runtime-main.js.map": "/camera_anomalies/static/js/runtime-main.b814477d.js.map",
+    "static/css/2.d34346ea.chunk.css": "/camera_anomalies/static/css/2.d34346ea.chunk.css",
+    "static/js/2.6b46bca2.chunk.js": "/camera_anomalies/static/js/2.6b46bca2.chunk.js",
+    "static/js/2.6b46bca2.chunk.js.map": "/camera_anomalies/static/js/2.6b46bca2.chunk.js.map",
+    "index.html": "/camera_anomalies/index.html",
+    "precache-manifest.2793277b701c65b5fdd156291cb0a19d.js": "/camera_anomalies/precache-manifest.2793277b701c65b5fdd156291cb0a19d.js",
+    "service-worker.js": "/camera_anomalies/service-worker.js",
+    "static/css/2.d34346ea.chunk.css.map": "/camera_anomalies/static/css/2.d34346ea.chunk.css.map",
+    "static/js/2.6b46bca2.chunk.js.LICENSE.txt": "/camera_anomalies/static/js/2.6b46bca2.chunk.js.LICENSE.txt",
+    "static/media/empty.png": "/camera_anomalies/static/media/empty.805c606f.png",
+    "static/media/logo.8dad8028.svg": "/camera_anomalies/static/media/logo.8dad8028.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.795fd000.js",
+    "static/js/runtime-main.b814477d.js",
     "static/css/2.d34346ea.chunk.css",
-    "static/js/2.caf7e6cd.chunk.js",
-    "static/js/main.c4531e47.chunk.js"
+    "static/js/2.6b46bca2.chunk.js",
+    "static/js/main.fdb20fcc.chunk.js"
   ]
 }
