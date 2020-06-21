@@ -17,6 +17,7 @@ export default css`
 
     /* colors */
     --color-text: hsl(222deg, 22%, 5%);
+    --color-text-secondary: #6b717e77;
     --color-background: hsl(0deg, 0%, 100%);
     --color-blurred-background: hsla(0deg, 0%, 100%, 0.85);
     /* --color-primary: hsl(245deg, 100%, 60%);

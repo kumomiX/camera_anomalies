@@ -5,6 +5,7 @@ import { PlusCircle } from 'react-feather'
 import { IconButton, Tooltip } from '@material-ui/core'
 import CamerasList from 'features/cameras/List'
 import Header from 'features/Header'
+import Tabs from './Tabs'
 
 const Wrapper = styled.aside`
   width: 100%;
@@ -38,6 +39,7 @@ export default function Sidebar() {
         </Tooltip>
       </Menu>
       <CamerasList />
+      <Tabs style={{ marginTop: 'auto' }} />
     </Wrapper>
   )
 }

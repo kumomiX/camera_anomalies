@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import globalStyles from './theme/global'
-import defaultTheme from './theme/default'
+import defaultTheme from './theme/system'
 import muiTheme from './theme/mui'
 
 const GlobalStyle = createGlobalStyle(globalStyles)
@@ -28,7 +28,7 @@ ReactDOM.render(
         <MuiThemeProvider theme={muiTheme}>
           <App />
           <GlobalStyle />
-          <ToastContainer tim />
+          <ToastContainer />
         </MuiThemeProvider>
       </ThemeProvider>
     </BrowserRouter>
@@ -39,4 +39,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+serviceWorker.register()

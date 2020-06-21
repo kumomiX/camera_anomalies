@@ -16,7 +16,46 @@ const SearchField = styled(InputBase).attrs((p) => ({
 }))`
   && {
     padding: var(--spacing-s);
-    background: ${(p) => p.theme.palette.background.lightgrey};
+    border-radius: var(--br-m);
+
+    transition-property: background-color, border-color, border-radius;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+
+    background: var(--color-subtle-background);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: var(--color-subtle-background-darker);
+    }
+
+    &:focus-within {
+      background: ${(p) => {
+        switch (p.color) {
+          // case 'success':
+          //   return p.theme.palette.success['50']
+          case 'error':
+            return 'var(--color-error-background)'
+          default:
+            return 'var(--color-secondary)'
+        }
+      }};
+      color: ${(p) => {
+        switch (p.color) {
+          case 'error':
+            return 'var(--color-error)'
+          default:
+            return 'var(--color-secondary-contrast)'
+        }
+      }};
+    }
+  }
+`
+
+export default SearchField
+
+/* background: ${(p) => p.theme.palette.background.lightgrey};
     border-radius: 15px;
     transition-property: background-color, border-color,border-radius;
     transition-duration: 0.25s;
@@ -48,7 +87,4 @@ const SearchField = styled(InputBase).attrs((p) => ({
             return p.theme.palette.secondary.contrastText
         }
       }};
-    }
-`
-
-export default SearchField
+    } */

@@ -25,7 +25,9 @@ export default function CameraPage() {
   return (
     <>
       {!camera ? (
-        <CircularProgress style={{ margin: 'auto' }} />
+        <div style={{ margin: 'auto', overflow: 'hidden' }}>
+          <CircularProgress />
+        </div>
       ) : (
         <>
           <Helmet>

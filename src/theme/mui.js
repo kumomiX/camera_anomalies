@@ -170,13 +170,15 @@ const MuiTheme = createMuiTheme({
     },
     MuiTabs: {
       root: {
-        minHeight: 44,
+        color: 'var(--color-text)',
+        borderTop: '1px solid var(--color-subtle-background)',
       },
       scrollable: {
         '&::-webkit-scrollbar': {
           display: 'none',
         },
       },
+
       indicator: {
         display: 'flex',
         justifyContent: 'center',
@@ -192,23 +194,36 @@ const MuiTheme = createMuiTheme({
       root: {
         padding: 0,
         textTransform: 'uppercase',
-        color: '#fff',
-        fontWeight: 500,
-        fontSize: '0.825rem !important',
+
+        // fontSize: '0.825rem !important',
         letterSpacing: '0.125rem',
         minWidth: 'unset !important',
         marginRight: '2rem',
-        minHeight: 44,
-        '&:focus': {
-          opacity: 1,
-        },
+        minHeight: 'calc(28px + var(--spacing-m) * 2)',
+        opacity: '0.4 !important',
+        transition: 'all 0.25s ease',
+
+        // '&:focus': {
+        //   opacity: '1 !important',
+        // },
         '&:hover': {
-          opacity: 1,
+          opacity: '1 !important',
           color: theme.palette.primary.main,
+        },
+        '&$selected': {
+          fontWeight: 'var(--font-weight-bold)',
+          color: 'var(--color-primary)',
+          opacity: '1 !important',
         },
       },
       labelContainer: {
         padding: '0 !important',
+      },
+      wrapper: {
+        '& svg': {
+          height: '28px',
+          width: '28px',
+        },
       },
     },
   },

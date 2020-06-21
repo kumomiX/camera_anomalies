@@ -7,7 +7,7 @@ const Wrapper = styled.header`
   width: 100%;
   height: var(--header-height);
   display: grid;
-  border-bottom: 1px solid var(--color-subtle-background);
+  /* border-bottom: 1px solid var(--color-subtle-background-darker); */
   padding: var(--spacing-xs) var(--spacing-s);
   grid-auto-columns: max-content;
   grid-template-columns: repeat(auto-fit, minmax(max-content, 0));
@@ -22,9 +22,12 @@ const Wrapper = styled.header`
 export default function Header({ children }) {
   return (
     <Wrapper>
-      <Logo />
+      {/* <Logo /> */}
+      <span role="img" aria-label="dead" style={{ fontSize: 48 }}>
+        👀
+      </span>
       <div>
-        <Typography variant="h6">Фарукшин Эрик</Typography>
+        {/* <Typography variant="h6">Фарукшин Эрик</Typography> */}
         {/* <Typography variant="h6"></Typography> */}
       </div>
     </Wrapper>

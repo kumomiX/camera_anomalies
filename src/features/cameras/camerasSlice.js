@@ -34,6 +34,7 @@ export const cameras = createSlice({
   initialState: {
     list: null,
     loadingList: true,
+    loadingListError: false,
     selected: null,
     loadingSelected: false,
   },
@@ -48,10 +49,16 @@ export const cameras = createSlice({
   extraReducers: {
     [fetchCameras.pending]: (state) => {
       state.loadingList = true
+      state.loadingListError = false
     },
     [fetchCameras.fulfilled]: (state, { payload }) => {
       state.list = payload
       state.loadingList = false
+      state.loadingListError = false
+    },
+    [fetchCameras.rejected]: (state, { payload }) => {
+      state.loadingList = false
+      state.loadingListError = true
     },
 
     [fetchCamera.pending]: (state) => {
