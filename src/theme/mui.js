@@ -159,7 +159,7 @@ const MuiTheme = createMuiTheme({
         },
       },
       button: {
-        '&:hover': {
+        '&:hover:not($selected)': {
           background: `${theme.palette.background.lightgrey} !important`,
         },
       },

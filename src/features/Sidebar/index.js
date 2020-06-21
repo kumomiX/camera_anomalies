@@ -6,6 +6,7 @@ import { IconButton, Tooltip } from '@material-ui/core'
 import CamerasList from 'features/cameras/List'
 import Header from 'features/Header'
 import Tabs from './Tabs'
+import TemplatesList from 'features/templates/TemplatesList'
 
 const Wrapper = styled.aside`
   width: 100%;
@@ -38,7 +39,8 @@ export default function Sidebar() {
           </IconButton>
         </Tooltip>
       </Menu>
-      <CamerasList />
+      {/* <CamerasList /> */}
+      <TemplatesList />
       <Tabs style={{ marginTop: 'auto' }} />
     </Wrapper>
   )

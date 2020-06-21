@@ -1,34 +1,46 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { List, CircularProgress, Typography } from '@material-ui/core'
-import Camera from './Camera'
-import { fetchCameras } from './camerasSlice'
+import Template from './Template'
+import { fetchTemplates } from './templatesSlice'
 import Flex from 'components/Flex'
 
 const styles = {
   innerDiv: { margin: 'var(--spacing-s)', overlow: 'hidden' },
 }
 
-export default function CamerasList() {
+const mockTemplates = [
+  {
+    uuid: 12313,
+    is_online: false,
+    is_active: false,
+    stream_url: 'http://idi.nahui',
+    thumb: undefined,
+    ip: '192.168.0.1',
+  },
+]
+
+export default function TemplatesList() {
   const dispatch = useDispatch()
 
-  const { cameras, loading, loadingListError } = useSelector(({ cameras }) => ({
-    cameras: cameras.list,
-    loading: cameras.loadingList,
-    loadingListError: cameras.loadingListError,
-  }))
+  const { list: templates, loading, loadingListError } = useSelector(
+    ({ templates }) => templates,
+  )
 
   useEffect(() => {
-    dispatch(fetchCameras({}))
+    dispatch(fetchTemplates({}))
   }, [dispatch])
 
   return (
     <List style={{ width: '100%' }}>
-      {loading ? (
+      {templates?.map((t) => (
+        <Template key={t.uuid} {...t} />
+      ))}
+      {/* {loading ? (
         <Flex component="li" style={styles.innerDiv}>
           <CircularProgress />
         </Flex>
-      ) : !cameras ? (
+      ) : !templates ? (
         <Flex
           flexDirection="column"
           alignItems="center"
@@ -49,8 +61,8 @@ export default function CamerasList() {
         </Flex>
       ) : (
         // TODO change key
-        cameras?.map((c) => <Camera key={c.uuid} {...c} />)
-      )}
+        templates?.map((c) => <Template key={c.uuid} {...c} />)
+      )} */}
     </List>
   )
 }

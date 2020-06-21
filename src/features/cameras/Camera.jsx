@@ -29,9 +29,11 @@ export default function Camera({
   return (
     <>
       <ListItem
-        selected={match?.params?.camera === uuid}
+        button
+        selected={match?.params?.camera === uuid.toString()}
         component={Link}
         to={`/cameras/${uuid}`}
+        {...props}
       >
         <ListItemAvatar>
           {/*  TODO  */}
