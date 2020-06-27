@@ -9,7 +9,7 @@ import {
 } from 'features/templates/templatesSlice'
 import { Helmet } from 'react-helmet'
 import config from 'app/config'
-import { X } from 'react-feather'
+import { UilTimes } from '@iconscout/react-unicons'
 
 export default function TemplatePage() {
   const dispatch = useDispatch()
@@ -42,7 +42,7 @@ export default function TemplatePage() {
                   component={Link}
                   to="/"
                 >
-                  <X />
+                  <UilTimes />
                 </IconButton>
                 <div>
                   <Typography>Шаблон</Typography>

@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import CamerasSearch from 'features/cameras/Search'
-import { PlusCircle } from 'react-feather'
 import { IconButton, Tooltip } from '@material-ui/core'
 import CamerasList from 'features/cameras/List'
 import Header from 'features/Header'
 import Tabs from './Tabs'
 import TemplatesList from 'features/templates/TemplatesList'
+import { UilPlusCircle } from '@iconscout/react-unicons'
 
 const Wrapper = styled.aside`
   width: 100%;
@@ -35,7 +35,7 @@ export default function Sidebar() {
         <CamerasSearch />
         <Tooltip title="Добавить камеру">
           <IconButton style={{ marginLeft: 'var(--spacing-s)' }}>
-            <PlusCircle />
+            <UilPlusCircle />
           </IconButton>
         </Tooltip>
       </Menu>

@@ -27,6 +27,7 @@ export default styled(NavLink).attrs((p) => ({
   font-size: 16px;
   display: inline-flex;
   justify-content: center;
+  flex-direction: column;
 
   transition: 0.25s ease all;
 

@@ -1,11 +1,10 @@
 import React from 'react'
-import { Tabs, Tab } from '@material-ui/core'
 import { useLocation } from 'react-router'
-import { Videocam, Notifications } from '@material-ui/icons'
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import NavTab from 'components/NavTab'
 import Flex from 'components/Flex'
+import { Typography } from '@material-ui/core'
+import { UilVideo, UilBell } from '@iconscout/react-unicons'
 
 // const NavTab = (props) => <Tab component={NavLink} {...props} />
 
@@ -17,8 +16,6 @@ const Wrapper = styled(Flex)`
 `
 
 export default function SidebarTabs({ ...props }) {
-  const location = useLocation()
-
   return (
     // <Tabs
     //   value={location}
@@ -31,10 +28,16 @@ export default function SidebarTabs({ ...props }) {
 
     <Wrapper {...props}>
       <NavTab aria-label="videocam" to="/cameras">
-        <Videocam />
+        <UilVideo />
+        <Typography textAlign="center" color="inherit" fontWeight="inherit">
+          Камеры
+        </Typography>
       </NavTab>
       <NavTab aria-label="notifications" to="/notifications">
-        <Notifications />
+        <UilBell />
+        <Typography textAlign="center" color="inherit">
+          Уведомления
+        </Typography>
       </NavTab>
     </Wrapper>
   )

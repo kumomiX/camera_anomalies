@@ -4,22 +4,23 @@ import {
   ListItemText,
   ListItemAvatar,
   Divider,
+  ListItemSecondaryAction,
+  IconButton,
 } from '@material-ui/core'
 import { Link, useLocation, matchPath } from 'react-router-dom'
 import Status from './Status'
 import AnalyticsStatus from './AnalyticsStatus'
 import { Draggable } from 'react-beautiful-dnd'
-import { UilReact } from '@iconscout/react-unicons'
+import { UilDraggabledots } from '@iconscout/react-unicons'
 
 // draggableId={idx.toString()} index={idx}
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: 'none',
-
   // change background colour if dragging
-  background: isDragging && 'lightgreen',
-
+  background: isDragging && 'var(--color-secondary)',
+  color: isDragging && 'var(--color-secondary-contrast)',
   // styles we need to apply on draggables
   ...draggableStyle,
 })
@@ -31,8 +32,6 @@ export default function Camera({
   stream_url,
   thumb,
   ip,
-  secondary,
-
   idx,
   ...props
 }) {
@@ -50,7 +49,6 @@ export default function Camera({
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
           style={getItemStyle(
             snapshot.isDragging,
             provided.draggableProps.style,
@@ -64,7 +62,6 @@ export default function Camera({
             {...props}
           >
             <ListItemAvatar>
-              <UilReact />
               {/*  TODO  */}
               {/* <Status isOnline={is_online} isActive={is_active} /> */}
               <Status />
@@ -82,7 +79,11 @@ export default function Camera({
                 },
               }}
             />
-            {secondary}
+            <ListItemSecondaryAction style={{ right: 'var(--spacing-s)' }}>
+              <IconButton {...provided.dragHandleProps}>
+                <UilDraggabledots />
+              </IconButton>
+            </ListItemSecondaryAction>
           </ListItem>
           <Divider variant="inset" component="li" />
         </div>

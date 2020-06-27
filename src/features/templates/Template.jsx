@@ -1,23 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   List,
   ListItem,
   Collapse,
   ListItemText,
-  Divider,
   ListItemSecondaryAction,
   IconButton,
-  ListItemIcon,
 } from '@material-ui/core'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
-import { Move } from 'react-feather'
 import Camera from 'features/cameras/Camera'
-import { Settings } from 'react-feather'
 import { Link, useLocation, matchPath } from 'react-router-dom'
 import { Droppable } from 'react-beautiful-dnd'
 
 const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver && 'lightblue',
+  background: isDraggingOver && 'var(--color-subtle-background)',
 })
 
 //  {...provided.droppableProps}
@@ -81,14 +77,7 @@ export default function Template({
                       {...camera}
                       idx={idx}
                       key={camera.uuid}
-                      style={{ padding: '0 0 0 var(--spacing-m)' }}
-                      secondary={
-                        <ListItemSecondaryAction>
-                          <IconButton>
-                            <Move />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      }
+                      // style={{ padding: '0 0 0 var(--spacing-m)' }}
                     />
                   ))}
                 </List>

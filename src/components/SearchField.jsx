@@ -1,7 +1,7 @@
 import React from 'react'
 import { InputBase, InputAdornment } from '@material-ui/core'
-import { Search } from 'react-feather'
 import styled from 'styled-components'
+import { UilSearch } from '@iconscout/react-unicons'
 
 const SearchField = styled(InputBase).attrs((p) => ({
   type: 'search',
@@ -10,7 +10,7 @@ const SearchField = styled(InputBase).attrs((p) => ({
   },
   startAdornment: (
     <InputAdornment position="start">
-      <Search style={{ height: 18, width: 18 }} />
+      <UilSearch style={{ height: 18, width: 18 }} />
     </InputAdornment>
   ),
 }))`

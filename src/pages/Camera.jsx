@@ -9,8 +9,8 @@ import config from 'app/config'
 import VideoPlayer from 'features/VideoPlayer'
 import CameraConfigForm from 'features/cameras/CameraConfigForm'
 import CameraAnalyticsForm from 'features/cameras/CameraAnalyticsForm'
-import { X } from 'react-feather'
 import CameraLogs from 'features/cameras/Logs'
+import { UilTimes } from '@iconscout/react-unicons'
 
 export default function CameraPage() {
   const dispatch = useDispatch()
@@ -43,7 +43,7 @@ export default function CameraPage() {
                   component={Link}
                   to="/"
                 >
-                  <X />
+                  <UilTimes />
                 </IconButton>
                 <div>
                   <Typography>Камера</Typography>

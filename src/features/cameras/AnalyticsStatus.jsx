@@ -1,9 +1,17 @@
 import React from 'react'
 import { Avatar, Tooltip } from '@material-ui/core'
-import { AlertTriangle, Smile, Minus } from 'react-feather'
+import {
+  UilSmileBeam,
+  UilExclamationCircle,
+  UilMinusCircle,
+} from '@iconscout/react-unicons'
 
 export default function AnalyticsStatus({ active, anomaly = true, ...props }) {
-  const Icon = active ? (!anomaly ? Smile : AlertTriangle) : Minus
+  const Icon = active
+    ? !anomaly
+      ? UilSmileBeam
+      : UilExclamationCircle
+    : UilMinusCircle
   return (
     <Tooltip
       title={
