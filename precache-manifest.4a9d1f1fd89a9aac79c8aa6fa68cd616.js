@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d7f20216bd0453594ff199d2987c373",
+    "revision": "6b845fe7aaac9ceabe7a3a6c511d931e",
     "url": "/camera_anomalies/index.html"
   },
   {
-    "revision": "e29c2d479d794b187ab5",
+    "revision": "756caae880e5c99aca15",
     "url": "/camera_anomalies/static/css/2.d34346ea.chunk.css"
   },
   {
-    "revision": "e29c2d479d794b187ab5",
-    "url": "/camera_anomalies/static/js/2.6b46bca2.chunk.js"
+    "revision": "756caae880e5c99aca15",
+    "url": "/camera_anomalies/static/js/2.304450c4.chunk.js"
   },
   {
-    "revision": "d4fbb244bf0571bdb72582d4d7837660",
-    "url": "/camera_anomalies/static/js/2.6b46bca2.chunk.js.LICENSE.txt"
+    "revision": "73e0064f89f35cb0cdcb6438238c0c76",
+    "url": "/camera_anomalies/static/js/2.304450c4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d41b5bcc418f6e4fb3b9",
-    "url": "/camera_anomalies/static/js/main.fdb20fcc.chunk.js"
+    "revision": "e3e1867a4ee44f9d0bc1",
+    "url": "/camera_anomalies/static/js/main.ee3e1362.chunk.js"
   },
   {
     "revision": "95dab8c2811b05a0702e",
