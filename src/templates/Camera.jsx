@@ -11,6 +11,7 @@ const Wrapper = styled.article`
 const Header = styled.header`
   height: var(--header-height);
   padding: var(--spacing-s) var(--spacing-xxl);
+  padding-left: 0;
   position: sticky;
   top: 0;
   background: var(--color-background);

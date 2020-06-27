@@ -3,28 +3,27 @@ import CameraTemplate from 'templates/Camera'
 import { useSelector, useDispatch } from 'react-redux'
 import { CircularProgress, Typography, IconButton } from '@material-ui/core'
 import { useParams, Link } from 'react-router-dom'
-import { fetchCamera, clearSelectedCamera } from 'features/cameras/camerasSlice'
+import {
+  fetchTemplate,
+  clearSelectedTemplate,
+} from 'features/templates/templatesSlice'
 import { Helmet } from 'react-helmet'
 import config from 'app/config'
-import VideoPlayer from 'features/VideoPlayer'
-import CameraConfigForm from 'features/cameras/CameraConfigForm'
-import CameraAnalyticsForm from 'features/cameras/CameraAnalyticsForm'
 import { X } from 'react-feather'
-import CameraLogs from 'features/cameras/Logs'
 
-export default function CameraPage() {
+export default function TemplatePage() {
   const dispatch = useDispatch()
-  const { camera: cameraUuid } = useParams()
-  const camera = useSelector(({ cameras }) => cameras.selected)
+  const { template: templateUuid } = useParams()
+  const template = useSelector(({ templates }) => templates.selected)
 
-  useEffect(() => {
-    dispatch(fetchCamera({ uuid: cameraUuid }))
+  // useEffect(() => {
+  //   dispatch(fetchTemplate({ uuid: templateUuid }))
 
-    return () => dispatch(clearSelectedCamera())
-  }, [cameraUuid, dispatch])
+  //   return () => dispatch(clearSelectedTemplate())
+  // }, [templateUuid, dispatch])
   return (
     <>
-      {!camera ? (
+      {!template ? (
         <div style={{ margin: 'auto', overflow: 'hidden' }}>
           <CircularProgress />
         </div>
@@ -32,7 +31,7 @@ export default function CameraPage() {
         <>
           <Helmet>
             <title>
-              {camera?.ip} - {config.title}
+              {template?.template_name} - {config.title}
             </title>
           </Helmet>
           <CameraTemplate
@@ -46,21 +45,15 @@ export default function CameraPage() {
                   <X />
                 </IconButton>
                 <div>
-                  <Typography>Камера</Typography>
+                  <Typography>Шаблон</Typography>
                   <Typography variant="h5" color="primary">
-                    {camera?.ip}
+                    {template?.template_name}
                   </Typography>
                 </div>
               </>
             }
           >
-            <div>
-              <VideoPlayer src={camera?.embed} />
-              <CameraConfigForm />
-              <CameraLogs />
-            </div>
-
-            <CameraAnalyticsForm />
+            <div>1231</div>
           </CameraTemplate>
         </>
       )}

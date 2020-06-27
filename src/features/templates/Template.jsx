@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
   List,
   ListItem,
@@ -7,13 +7,30 @@ import {
   Divider,
   ListItemSecondaryAction,
   IconButton,
+  ListItemIcon,
 } from '@material-ui/core'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
+import { Move } from 'react-feather'
 import Camera from 'features/cameras/Camera'
 import { Settings } from 'react-feather'
 import { Link, useLocation, matchPath } from 'react-router-dom'
+import { Droppable } from 'react-beautiful-dnd'
 
-export default function Template({ template_name, uuid, cameras, ...props }) {
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver && 'lightblue',
+})
+
+//  {...provided.droppableProps}
+export default function Template({
+  dragConstraints,
+  idx,
+  setPosition,
+  moveItem,
+  template_name,
+  uuid,
+  cameras,
+  ...props
+}) {
   const [expanded, setExpanded] = useState(false)
 
   const location = useLocation()
@@ -24,53 +41,67 @@ export default function Template({ template_name, uuid, cameras, ...props }) {
   })
 
   return (
-    <div key={uuid}>
-      {cameras != null ? (
-        <div key={uuid}>
-          <ListItem
-            button
-            key={uuid}
-            component={Link}
-            to={`/templates/${uuid}`}
-            selected={match?.params?.template === uuid.toString()}
-          >
-            <ListItemText
-              primary={template_name}
-              primaryTypographyProps={{
-                variant: 'h6',
-                color: expanded ? 'primary' : 'textPrimary',
-              }}
-            />
-            <ListItemSecondaryAction style={{ right: 'var(--spacing-s)' }}>
-              <IconButton onClick={() => setExpanded(!expanded)}>
-                {/* <Settings /> */}
-                {expanded ? <ExpandLess /> : <ExpandMore />}
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-          <Collapse
-            key={uuid}
-            component="li"
-            in={expanded}
-            timeout="auto"
-            unmountOnExit
-          >
-            <List disablePadding>
-              {cameras.map((camera) => (
-                <Camera
-                  {...camera}
-                  key={camera.uuid}
-                  style={{ padding: '0 0 0 var(--spacing-m)' }}
+    <Droppable droppableId={uuid}>
+      {(provided, snapshot) => (
+        <div
+          ref={provided.innerRef}
+          style={getListStyle(snapshot.isDraggingOver)}
+        >
+          {cameras != null ? (
+            <div>
+              <ListItem
+                button
+                component={Link}
+                to={`/templates/${uuid}`}
+                selected={match?.params?.template === uuid}
+              >
+                <ListItemText
+                  primary={template_name}
+                  primaryTypographyProps={{
+                    variant: 'h6',
+                    color: expanded ? 'primary' : 'textPrimary',
+                  }}
                 />
-              ))}
-            </List>
-          </Collapse>{' '}
+                <ListItemSecondaryAction style={{ right: 'var(--spacing-s)' }}>
+                  <IconButton onClick={() => setExpanded(!expanded)}>
+                    {/* <Settings /> */}
+                    {expanded ? <ExpandLess /> : <ExpandMore />}
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+              <Collapse
+                component="li"
+                in={expanded}
+                timeout="auto"
+                unmountOnExit
+              >
+                <List disablePadding style={{ overflow: 'visible' }}>
+                  {cameras.map((camera, idx) => (
+                    <Camera
+                      {...camera}
+                      idx={idx}
+                      key={camera.uuid}
+                      style={{ padding: '0 0 0 var(--spacing-m)' }}
+                      secondary={
+                        <ListItemSecondaryAction>
+                          <IconButton>
+                            <Move />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      }
+                    />
+                  ))}
+                </List>
+              </Collapse>{' '}
+            </div>
+          ) : (
+            <ListItem button>
+              <ListItemText primary={template_name} />
+            </ListItem>
+          )}
+          {provided.placeholder}
         </div>
-      ) : (
-        <ListItem button key={uuid}>
-          <ListItemText primary={template_name} />
-        </ListItem>
       )}
-    </div>
+    </Droppable>
   )
 }
