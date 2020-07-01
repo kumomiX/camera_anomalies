@@ -1,0 +1,47 @@
+name: Build and deploy
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+      - deploy*
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+env:
+  IMAGE_NAME: camera-anomalies
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      
+      - name: build and push image
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+          REGISTRY_HOST: ${{ secrets.REGISTRY_HOST }}
+        run: |
+          docker login --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD $REGISTRY_HOST
+          docker build --tag ${REGISTRY_HOST}/${IMAGE_NAME}:${GITHUB_SHA:0:7} .
+          docker push ${REGISTRY_HOST}/${IMAGE_NAME}:${GITHUB_SHA:0:7}
+
+      - name: download kubectl
+        run: |
+          curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+          chmod +x kubectl
+
+      - name: deploy application to kubernetes
+        env:
+          REGISTRY_HOST: ${{ secrets.REGISTRY_HOST }}
+          KUBE_CONFIG_BODY_BASE64: ${{ secrets.KUBE_CONFIG_BODY_BASE64 }}
+        run: |
+          mkdir $HOME/.kube
+          echo $KUBE_CONFIG_BODY_BASE64 | base64 -d > $HOME/.kube/config
+          ./kubectl patch deployments.apps camera-anomalies -p "{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"camera-anomalies\",\"image\":\"${REGISTRY_HOST}/${IMAGE_NAME}:${GITHUB_SHA:0:7}\"}]}}}}"
